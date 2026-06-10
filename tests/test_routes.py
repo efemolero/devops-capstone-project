@@ -132,7 +132,7 @@ class TestAccountService(TestCase):
         data = resp.get_json()
         self.assertEqual(len(data), 5)
 
-    def test_get_account_list(self):
+    def test_get_empty_account_list(self):
         """It should retrieve empty list of Accounts"""
         self._create_accounts(0)
         resp = self.client.get(BASE_URL)

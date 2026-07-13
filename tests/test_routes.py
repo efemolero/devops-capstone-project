@@ -24,6 +24,7 @@ HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 ######################################################################
 #  T E S T   C A S E S
 ######################################################################
+
 class TestAccountService(TestCase):
     """Account Service Tests"""
 
@@ -190,12 +191,12 @@ class TestAccountService(TestCase):
         account = self._create_accounts(1)[0]
         resp = self.client.delete(f"{BASE_URL}/{account.id}")
         self.assertEqual(resp.status_code, status.HTTP_204_NO_CONTENT)
-    
+
     def test_delete_account_not_found(self):
         """It should not Delete an non-existing Account"""
         resp = self.client.delete(f"{BASE_URL}/0")
         self.assertEqual(resp.status_code, status.HTTP_204_NO_CONTENT)
-    
+
     def test_method_not_allowed(self):
         """It should not allow an illegal method call"""
         resp = self.client.delete(BASE_URL)
